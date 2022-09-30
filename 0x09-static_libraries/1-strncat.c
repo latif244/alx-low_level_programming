@@ -1,4 +1,10 @@
-#include "main.h"
+# <= '9')
+num = num * 10 + (*s - '0');
+else if (num > 0)
+	break;
+	} while (*s++);
+return (num *i);
+}nclude "main.h"
 /**
  *_strncat - concatenate two strings but add inputted number of bytes
  *@dest: string to be appended upon
