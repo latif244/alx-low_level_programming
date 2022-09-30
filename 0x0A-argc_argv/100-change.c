@@ -1,66 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "holberton.h"
-int change(int cents);
+
 /**
- * main - Entry Point
- * @argc: arguments
- * @argv: array pointing to arguments
- * Return: 0
+ * main - prints the minimum number of coins to make change for an amount of money
+ * @argc: number of command line arguments
+ * @argv: array that contains the program command line arguments
+ * Return: 0 Success
  */
 int main(int argc, char *argv[])
 {
-	if (argc != 2)
+	int cents, ncoins = 0;
+
+	if (argc == 1 || argc > 2)
 	{
-		printf("%s\n", "Error");
+		printf("Error\n");
 		return (1);
 	}
-	else if (argc < 0)
-	{
-		return (0);
-	}
 
-	printf("%d\n", change(atoi(argv[1])));
-	return (0);
-}
-
-/**
- * change - get change
- * @cents: amount of coins from main function
- * Return: change
- */
-int change(int cents)
-{
-	int q = 25, d = 10, n = 5, t = 2, p = 1;
-	int coins;
+	cents = atoi(argv[1]);
 
 	while (cents > 0)
 	{
-		while (cents >= q)
-		{
-			cents -= q;
-			coins++;
-		}
-		while (cents >= d)
-		{
-			cents -= d;
-			coins++;
-		}
-		while (cents >= n)
-		{
-			cents -= n;
-			coins++;
-		}
-		while (cents >= t)
-		{
-			cents -= t;
-			coins++;
-		}
-		while (cents >= p)
-		{
-			cents -= p;
-			coins++;
-		}
+		if (cents >= 25)
+			cents -= 25;
+		else if (cents >= 10)
+			cents -= 10;
+		else if (cents >= 5)
+			cents -= 5;
+		else if (cents >= 2)
+			cents -= 2;
+		else if(cents >= 1)
+			cents -= 1;
+		ncoins += 1;
 	}
-	return (coins);
+	printf("%d\n", ncoins);
+	return (0);
 }
